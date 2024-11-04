@@ -95,12 +95,30 @@ jobs:
         done
 
         # Get the last pre-release and regular release tags
-        pre_release_last_tag=${pre_release_tags[-1]}
-        non_pre_release_last_tag=${release_tags[-1]}
+        if [ ${#pre_release_tags[@]} -gt 0 ]; then
+          pre_release_last_tag=${pre_release_tags[-1]}
+        else
+          pre_release_last_tag=""
+        fi
+
+        if [ ${#release_tags[@]} -gt 0 ]; then
+          non_pre_release_last_tag=${release_tags[-1]}
+        else
+          non_pre_release_last_tag=""
+        fi
 
         # Get the second to last pre-release and regular release tags
-        pre_release_second_to_last_tag=${pre_release_tags[-2]}
-        non_pre_release_second_to_last_tag=${release_tags[-2]}
+        if [ ${#pre_release_tags[@]} -gt 1 ]; then
+          pre_release_second_to_last_tag=${pre_release_tags[-2]}
+        else
+          pre_release_second_to_last_tag=""
+        fi
+
+        if [ ${#release_tags[@]} -gt 1 ]; then
+          non_pre_release_second_to_last_tag=${release_tags[-2]}
+        else
+          non_pre_release_second_to_last_tag=""
+        fi
 
         # Set environment variables
         echo "LAST_TAG=$last_tag" >> $GITHUB_ENV
