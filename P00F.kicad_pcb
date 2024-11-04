@@ -2622,7 +2622,7 @@
 	(footprint "Snapeda:easyeda2kicad_USB-C-SMD_TYPE-C-31-M-31"
 		(layer "F.Cu")
 		(uuid "e581fb49-32fa-463f-9adb-1428ca26952e")
-		(at 151.38 85.93)
+		(at 152.9 88.6775)
 		(property "Reference" "USB2"
 			(at 0 -6.37 0)
 			(layer "F.SilkS")

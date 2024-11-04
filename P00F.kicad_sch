@@ -2423,7 +2423,7 @@
 	)
 	(symbol
 		(lib_id "Snapeda_kicad_sym:UJ20-C-H-G-SMT-TR")
-		(at 120.65 58.42 0)
+		(at 113.03 59.69 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2432,7 +2432,7 @@
 		(fields_autoplaced yes)
 		(uuid "41659bb3-368c-41b3-8449-d6ea1654f994")
 		(property "Reference" "J1"
-			(at 120.65 30.48 0)
+			(at 113.03 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2440,7 +2440,7 @@
 			)
 		)
 		(property "Value" "UJ20-C-H-G-SMT-TR"
-			(at 120.65 33.02 0)
+			(at 113.03 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2448,7 +2448,7 @@
 			)
 		)
 		(property "Footprint" "Snapeda:UJ20-C-H-G-SMT-TR_CUI_UJ20-C-H-G-SMT-TR"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2458,7 +2458,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2467,7 +2467,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2476,7 +2476,7 @@
 			)
 		)
 		(property "MF" "CUI Devices"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2486,7 +2486,7 @@
 			)
 		)
 		(property "MAXIMUM_PACKAGE_HEIGHT" "3.66mm"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2496,7 +2496,7 @@
 			)
 		)
 		(property "Package" "None"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2506,7 +2506,7 @@
 			)
 		)
 		(property "Price" "None"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2516,7 +2516,7 @@
 			)
 		)
 		(property "Check_prices" "https://www.snapeda.com/parts/UJ20-C-H-G-SMT-TR/Same+Sky/view-part/?ref=eda"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2526,7 +2526,7 @@
 			)
 		)
 		(property "STANDARD" "Manufacturer Recommendations"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2536,7 +2536,7 @@
 			)
 		)
 		(property "PARTREV" "1.01"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2546,7 +2546,7 @@
 			)
 		)
 		(property "SnapEDA_Link" "https://www.snapeda.com/parts/UJ20-C-H-G-SMT-TR/Same+Sky/view-part/?ref=snap"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2556,7 +2556,7 @@
 			)
 		)
 		(property "MP" "UJ20-C-H-G-SMT-TR"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2566,7 +2566,7 @@
 			)
 		)
 		(property "Purchase-URL" "https://www.snapeda.com/api/url_track_click_mouser/?unipart_id=12123263&manufacturer=CUI Devices&part_name=UJ20-C-H-G-SMT-TR&search_term=uj20-c-h-g-smt-tr"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2576,7 +2576,7 @@
 			)
 		)
 		(property "Description_1" "Type C, USB 2.0, 480 Mbps, 20 Vdc, 5 A, Right Angle, Gold Flash, Surface Mount, Black Insulator, USB Receptacle"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2586,7 +2586,7 @@
 			)
 		)
 		(property "CUI_purchase_URL" "https://www.cuidevices.com/product/interconnect/connectors/usb-connectors/uj20-c-h-g-smt-tr?utm_source=snapeda.com&utm_medium=referral&utm_campaign=snapedaBOM"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2596,7 +2596,7 @@
 			)
 		)
 		(property "Availability" "In Stock"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2606,7 +2606,7 @@
 			)
 		)
 		(property "MANUFACTURER" "CUI Devices"
-			(at 120.65 58.42 0)
+			(at 113.03 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
