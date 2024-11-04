@@ -1,15 +1,15 @@
 # KiCad_Template
 
-This is a template repo for KiCAD v6 projects with 
+This is a template repo for KiCAD v8 projects with 
 
-### Goal
+### Goal & Status
+| undefined                             | learn                                                                                            | prototype                  | 80-20-rule                                                   | polished Product |
+|---------------------------------------|--------------------------------------------------------------------------------------------------|----------------------------|--------------------------------------------------------------|------------------|
+| not known what the project will bring | personally learn something new (function, design, process) otherwise no usefull outcome expected | a working prototype or mvp | 80% outcome with 20% effort. Dont expect a finished product. | -                |
 
-The goal of the project will be:
-- [ ] **undefined** - not known what the project will bring 
-- [x] **learn** - personally learn something new, no usefull outcome expected
-- [ ] **prototype** - a working prototype or mvp
-- [ ] **80-20-rule** - 80% outcome with 20% effort
-- [ ] **Product** - lets see :wink:
+| idea                   | design                                                | implementation | testing | finished |
+|------------------------|-------------------------------------------------------|----------------|---------|----------|
+| brainstorming workflow | putting together a goal list, architecture, hig level | schematic, pcb |         |          |
 
 ## Todo
 

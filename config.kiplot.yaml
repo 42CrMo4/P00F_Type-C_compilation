@@ -1,0 +1,192 @@
+# Example KiPlot config file  
+kiplot:
+  version: 1
+
+preflight:
+  update_xml: true
+  check_zone_fills: true
+  erc:
+    enabled: true
+    dont_stop: true
+  drc:
+    enabled: true
+    dont_stop: true
+
+global:
+   output: <<ID>>_<<project_name>>_%i_<<hash>>.%x
+
+import:
+  - file: 3DRender_top_straight
+  - file: JLCPCB
+  - file: PCBWay
+
+outputs:
+
+#Plot SCH / PCB
+  - name: 'print_sch'
+    comment: "Print schematic (PDF)"
+    type: pdf_sch_print
+    dir: Plots
+
+  - name: 'print_front'
+    comment: "Print F.Cu+F.SilkS"
+    type: pcb_print
+    dir: Plots
+    options:
+      pages:
+        - layers:
+            - layer: F.Cu
+            - layer: F.SilkS
+        - layers:
+            - layer: B.Cu
+            - layer: B.SilkS
+  
+# Bom's
+  - name: 'interactive_bom'
+    comment: "Interactive Bill of Materials (HTML)"
+    type: ibom
+    dir: BoM
+    options:
+      blacklist: 'DNF*'
+
+  - name: 'bom_csv_all'
+    comment: "Bill of Materials in CSV format" 
+    type: bom
+    dir: BoM
+    options:
+      format: CSV
+      csv:
+        hide_pcb_info: true
+        hide_stats_info: true
+
+  - name: 'bom_csv'
+    comment: "Bill of Materials in CSV format" 
+    type: bom
+    dir: BoM
+    run_by_default: false
+    options:
+      format: CSV
+      output: <<ID>>_BoM.csv
+      csv:
+        hide_pcb_info: true
+        hide_stats_info: true
+
+#PCBDraw
+  - name: pcb_top_b_all
+    comment: "PCB render top blue "
+    type: pcbdraw
+    options:
+      format: png
+      style: set-blue-enig
+      show_components: none
+      dpi: 600
+
+  - name: pcb_bottom_b_all
+    comment: "PCB render bottom blue "
+    type: pcbdraw
+    options:
+      format: png
+      style: set-blue-enig
+      bottom: True
+      show_components: none
+      dpi: 600
+
+  - name: pcb_top_b
+    comment: "PCB render top blue "
+    type: pcbdraw
+    run_by_default: false
+    options:
+      output: PCBdraw_Top.png
+      format: png
+      style: set-blue-enig
+      show_components: none
+      dpi: 600
+
+  - name: pcb_bottom_b
+    comment: "PCB render bottom blue "
+    type: pcbdraw
+    run_by_default: false
+    options:
+      output: PCBdraw_Back.png
+      format: png
+      style: set-blue-enig
+      bottom: True
+      show_components: none
+      dpi: 600
+
+#3D
+  - name: step
+    comment: "Generate 3D model (STEP)"
+    type: step
+    dir: 3D
+    options:
+      metric_units: true
+      download: true
+      kicad_3d_url: 'https://gitlab.com/kicad/libraries/kicad-packages3D/-/raw/master/'
+
+  - name: 3dview
+    comment: "Generate render from 3D model"
+    type: render_3d
+    dir: Render
+    options:
+      metric_units: true
+      download: true
+      kicad_3d_url: 'https://gitlab.com/kicad/libraries/kicad-packages3D/-/raw/master/'
+      orthographic: true
+
+# - name: 3dview_render
+#   comment: "Generate render from 3D model from Blender"
+#   type: blender_export
+#   dir: Render
+#   options:
+#     pcb3d:
+#       download: true
+#       kicad_3d_url: 'https://gitlab.com/kicad/libraries/kicad-packages3D/-/raw/master/'
+#     render_options:
+#       samples: 10
+#       resolution_x: 3072
+#       resolution_y: 1920
+#       transparent_background: true
+#     light:
+#       energy: 1
+#       type: "AREA"
+#     outputs:
+#       type: "render"
+
+# Diffs
+  - name: 'diff_pcb_KIBOT_LAST-1'
+    comment: "PCB difference KIBOT_LAST-1"
+    type: diff
+    dir: Diff
+    layers: ['F.Cu', 'B.Cu']
+    options:
+      output: Diff_PCB_HEAD_KIBOT_LAST-1.pdf
+      old: KIBOT_LAST-1
+      old_type: git
+      new: HEAD
+      new_type: git
+      cache_dir: .cache
+      #add_link_id: true
+      diff_mode: red_green
+  - name: 'diff_sch_KIBOT_LAST-1'
+    comment: "SCH difference KIBOT_LAST-1"
+    type: diff
+    dir: Diff
+    options:
+      output: Diff_SCH_HEAD_KIBOT_LAST-1.pdf
+      old: KIBOT_LAST-1
+      old_type: git
+      new: HEAD
+      new_type: git
+      cache_dir: .cache
+      #add_link_id: true
+      diff_mode: red_green
+      pcb: false
+
+# General
+  - name: 'Kicanvas'
+    comment: "Website with KICAD filse viewer"
+    type: kicanvas
+    dir: KiCanvas
+    options: 
+      source: ['schematic', 'pcb', 'project']

@@ -1,22 +1,19 @@
-name: CI output design
+name: CI and Release Workflow
 
-# ToDos:
-# - artifact upload ERC/DRC
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events that happen on all branches
 on:
   push:
-    # branches: [ main ]
+    branches:
+      - '**'
+    tags:
+      - 'v[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+-rc[0-9]+'
     paths:
       - '*.kicad_sch'
       - '*.kicad_pcb'
       - '*.kiplot.yaml'
       - '.github/workflows/generate_output.yml'
       - 'project.properties'
-
   pull_request:
-    # branches: [ main ]
     paths:
       - '*.kicad_sch'
       - '*.kicad_pcb'
@@ -24,6 +21,232 @@ on:
       - '.github/workflows/generate_output.yml'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel.
+#jobs:
+  #call-workflow-passing-data:
+  #  uses: 42CrMo4/KiCad_Workflows/.github/workflows/generate_output.yml@ki8Diff
+
 jobs:
-  call-workflow-passing-data:
-    uses: 42CrMo4/KiCad_Workflows/.github/workflows/generate_output.yml@v6.0
+  determine-run-type:
+    runs-on: ubuntu-latest
+    outputs:
+      run-type: ${{ steps.check-ref.outputs.run-type }}
+    steps:
+      - name: Check ref
+        id: check-ref
+        run: |
+          if [[ ${{ github.ref }} =~ ^refs/tags/v[0-9]+\.[0-9]+$ ]]; then
+            echo "run-type=release" >> $GITHUB_OUTPUT
+          elif [[ ${{ github.ref }} =~ ^refs/tags/v[0-9]+\.[0-9]+-rc[0-9]+$ ]]; then
+            echo "run-type=rc" >> $GITHUB_OUTPUT
+          else
+            echo "run-type=ci" >> $GITHUB_OUTPUT
+          fi
+
+  ERC:
+    runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:1.7.0
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ERC
+        run: |
+          [ -f *.kicad_sch ] && kiplot -d Fabrication_temp -s update_xml,run_drc -i
+
+  DRC:
+    runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:1.7.0
+    needs: ERC
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run DRC
+        run: |
+          [ -f *.kicad_pcb ] && kiplot -d Fabrication_temp -s update_xml,run_erc -i
+
+  Fabrication:
+    name: Fabrication files
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: [DRC, determine-run-type]
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: '0'
+
+    - name: List tags and set environment variables
+      run: |
+        # Sort tags, placing non-pre-release tags last
+        sorted_tags=$(git tag | sed '/-/!{s/$/_/}' | sort -V | sed 's/_$//')
+        
+        # Get the most recent tag
+        last_tag=$(echo "$sorted_tags" | tail -n 1)
+        
+        # Initialize arrays for pre-release and regular release tags
+        pre_release_tags=()
+        release_tags=()
+
+        # Categorize tags into pre-release and regular release
+        for tag in $(git tag); do 
+          if [[ $tag =~ rc ]]; then
+            pre_release_tags+=("$tag")
+          else
+            release_tags+=("$tag")
+          fi
+        done
+
+        # Get the last pre-release and regular release tags
+        pre_release_last_tag=${pre_release_tags[-1]}
+        non_pre_release_last_tag=${release_tags[-1]}
+
+        # Get the second to last pre-release and regular release tags
+        pre_release_second_to_last_tag=${pre_release_tags[-2]}
+        non_pre_release_second_to_last_tag=${release_tags[-2]}
+
+        # Set environment variables
+        echo "LAST_TAG=$last_tag" >> $GITHUB_ENV
+        echo "PRE_RELEASE_LAST_TAG=$pre_release_last_tag" >> $GITHUB_ENV
+        echo "LAST_NON_PRE_RELEASE_TAG=$non_pre_release_last_tag" >> $GITHUB_ENV
+        echo "PRE_RELEASE_SECOND_TO_LAST_TAG=$pre_release_second_to_last_tag" >> $GITHUB_ENV
+        echo "NON_PRE_RELEASE_SECOND_TO_LAST_TAG=$non_pre_release_second_to_last_tag" >> $GITHUB_ENV
+
+        # Check if the latest tag is a non-rc tag and find corresponding rc tag
+        if [[ ! $last_tag =~ rc ]]; then
+          last_tag_base=$(echo $last_tag | sed 's/[a-zA-Z]*//g')
+          echo "Last tag base: $last_tag_base"
+          matching_rc_tag=$(git tag | grep "${last_tag_base}-rc" | sort -V | tail -n 1)
+          if [[ -n $matching_rc_tag ]]; then
+            echo "MATCHING_RC_TAG=$matching_rc_tag" >> $GITHUB_ENV
+          else
+            echo "MATCHING_RC_TAG=No corresponding RC tag found" >> $GITHUB_ENV
+          fi
+        else
+          # If the latest tag is an rc tag, find the second to last rc tag with the same base number
+          last_tag_base=$(echo $last_tag | sed 's/-rc.*//')
+
+          # Get the tags that match the given base pattern
+          matching_rc_tags=($(git tag | grep "${last_tag_base}-rc" | sort -V))
+          if [[ ${#matching_rc_tags[@]} -gt 0 ]]; then
+            matching_rc_tag="${matching_rc_tags[-1]}"
+            echo "MATCHING_RC_TAG=$matching_rc_tag" >> $GITHUB_ENV
+
+            if [[ ${#matching_rc_tags[@]} -gt 1 ]]; then
+              second_to_last_matching_rc_tag="${matching_rc_tags[-2]}"
+              echo "SECOND_TO_LAST_MATCHING_RC_TAG=$second_to_last_matching_rc_tag" >> $GITHUB_ENV
+            else
+              echo "SECOND_TO_LAST_MATCHING_RC_TAG=No second to last RC tag found" >> $GITHUB_ENV
+            fi
+          else
+            echo "No matching tags found for base: ${last_tag_base}-rc"
+            echo "MATCHING_RC_TAG=No matching RC tag found" >> $GITHUB_ENV
+            echo "SECOND_TO_LAST_MATCHING_RC_TAG=No second to last RC tag found" >> $GITHUB_ENV
+          fi
+        fi
+
+        # Debug: Print all environment variables
+        echo "Last Tag: ${{ env.LAST_TAG }}"
+        echo "Pre-Release Last Tag: ${{ env.PRE_RELEASE_LAST_TAG }}"
+        echo "Last Non-Pre-Release Tag: ${{ env.LAST_NON_PRE_RELEASE_TAG }}"
+        echo "Pre-Release Second to Last Tag: ${{ env.PRE_RELEASE_SECOND_TO_LAST_TAG }}"
+        echo "Non-Pre-Release Second to Last Tag: ${{ env.NON_PRE_RELEASE_SECOND_TO_LAST_TAG }}"
+        echo "Matching RC Tag: ${{ env.MATCHING_RC_TAG }}"
+        echo "Second to Last Matching RC Tag: ${{ env.SECOND_TO_LAST_MATCHING_RC_TAG }}"
+
+    - name: Update the Kibot File with the Tags
+      run: |
+        if [ -n "${{ steps.tag-info.outputs.PREVIOUS_RELEASE }}" ]; then
+          curl -o Diff_append.yaml https://raw.githubusercontent.com/42CrMo4/KiCad_Workflows/ki8Diff/.github/workflows/Diff_append.yaml
+          cat Diff_append.yaml >> *.kiplot.yaml
+          sed -i "s!<<TAG>>!${{ steps.tag-info.outputs.PREVIOUS_RELEASE }}!" *.kiplot.yaml
+        else
+          echo "No suitable tag found"
+        fi
+        if [ -n "${{ steps.tag-info.outputs.PREVIOUS_RC }}" ]; then
+          curl -o Diff_append.yaml https://raw.githubusercontent.com/42CrMo4/KiCad_Workflows/ki8Diff/.github/workflows/Diff_append.yaml
+          cat Diff_append.yaml >> *.kiplot.yaml
+          sed -i "s!<<TAG>>!${{ steps.tag-info.outputs.PREVIOUS_RC }}!" *.kiplot.yaml
+        else
+          echo "No suitable rc-tag found"
+        fi
+
+    - name: Assign variables from project.properties to Env variable
+      run: |
+        cat project.properties | egrep -v "^\s*(#|$)" >> $GITHUB_ENV 
+        echo COMMIT=$(git rev-parse --short HEAD) >> $GITHUB_ENV 
+
+    #- name: Update the Schematic with the git hash
+    #  run: |
+    #    sed -i "s!<<hash>>!Git-${{ env.COMMIT }}!" *.kicad_sch
+    #    sed -i "s!<<project_name>>!${{ env.project_name }}!" *.kicad_sch
+    #    sed -i "s!<<date>>!$(date +'%Y-%m-%d')!" *.kicad_sch 
+    #    sed -i "s!<<ID>>!${{ env.ID }}!" *.kicad_sch
+
+    - name: Update the PCBs with the git hash
+      run: |
+        sed -i "s!<<hash>>!Git-${{ env.COMMIT }}!" *.kicad_*
+        sed -i "s!<<project_name>>!${{ env.project_name }}!" *.kicad_*
+        sed -i "s!<<date>>!$(date +'%Y-%m-%d')!" *.kicad_* 
+        sed -i "s!<<website_link>>!${{ env.Website_link }}//${{ env.ID }}!" *.kicad_* 
+        sed -i "s!<<ID>>!ID:${{ env.ID }}!" *.kicad_* 
+
+    - name: Update the KiPlot File with the git hash
+      run: |
+        sed -i "s!<<hash>>!Git-${{ env.COMMIT }}!" *.kiplot.yaml
+        sed -i "s!<<project_name>>!${{ env.project_name }}!" *.kiplot.yaml
+        sed -i "s!<<ID>>!${{ env.ID }}!" *.kiplot.yaml
+
+    - uses: INTI-CMNB/KiBot@v2_k8
+      with:
+        config: config.kiplot.yaml
+        dir: Fabrication_temp
+
+    - name: Rename the Schematic and PCB Raw Files
+      run: |
+        mv *.kicad_sch ${{ env.ID }}_${{ env.project_name }}_${{ env.COMMIT }}.kicad_sch
+        mv *.kicad_pcb ${{ env.ID }}_${{ env.project_name }}_${{ env.COMMIT }}.kicad_pcb
+        cp *.kicad_sch ${{ env.ID }}_${{ env.COMMIT }}.kicad_sch
+        cp *.kicad_pcb ${{ env.ID }}_${{ env.COMMIT }}.kicad_pcb
+
+    - name: Retrieve results kicad_pcb with the git hash
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.ID }}_${{ env.project_name }}_${{ env.COMMIT }}_Kicad_raw
+        path: '${{ env.ID }}_*.kicad_*'
+
+    - name: Retrieve results
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.ID }}_${{ env.project_name }}_${{ env.COMMIT }}_Output
+        path: |
+          Fabrication_temp/
+
+    - name: Create GitHub Release
+      if: needs.determine-run-type.outputs.run-type != 'ci'
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "Fabrication_temp/*,Fabrication_temp/*/*, *.kicad_sch, *.kicad_pcb, *Gerber.zip"
+        bodyFile: "docs/release_note.md"
+        prerelease: ${{ needs.determine-run-type.outputs.run-type == 'rc' }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+  Archive-md:
+    name: Archive & Renew Release Docs
+    runs-on: ubuntu-latest
+    needs: [Fabrication, determine-run-type]
+    if: needs.determine-run-type.outputs.run-type == 'release'
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Renaming Release note & checklist + copy the template
+        run: |
+          cd docs
+          mv release_note.md release_note_${{ github.ref_name }}.md
+          mv release_checklist.md release_checklist_${{ github.ref_name }}.md
+          cp release_template/release_note.md release_note.md 
+          cp release_template/release_checklist.md release_checklist.md
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          repository: .
+          branch: main
+          commit_message: Archive & Renew release docs
