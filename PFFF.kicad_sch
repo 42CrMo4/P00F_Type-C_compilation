@@ -1707,6 +1707,16 @@
 		)
 		(uuid "fcde8359-79c1-4c65-b6bb-e64ee32b9607")
 	)
+	(text "debug"
+		(exclude_from_sim no)
+		(at 233.68 35.814 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "460bcb4f-f5f1-4b19-9642-f090f649f945")
+	)
 	(global_label "En"
 		(shape input)
 		(at 256.54 96.52 180)
