@@ -129,6 +129,8 @@ outputs:
     type: render_3d
     dir: Render
     options:
+      width: 1920
+      height: 1080
       metric_units: true
       download: true
       kicad_3d_url: 'https://gitlab.com/kicad/libraries/kicad-packages3D/-/raw/master/'
