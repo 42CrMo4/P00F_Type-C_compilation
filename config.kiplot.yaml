@@ -190,3 +190,47 @@ outputs:
     dir: KiCanvas
     options: 
       source: ['schematic', 'pcb', 'project']
+
+  - name: blender_export
+    comment: "Export PCB to Blender format"
+    type: blender
+    dir: blender_output
+    options:
+      # PCB rendering options
+      board_opacity: 0.8
+      board_color: [0.5, 0.5, 0.5]  # RGB values
+      copper_thickness: 0.035
+      soldermask_thickness: 0.025
+      silk_thickness: 0.025
+      
+      # Component options
+      export_components: true
+      component_color: [0.7, 0.7, 0.7]
+      component_opacity: 1.0
+      
+      # Layer options
+      mask_color: [0.1, 0.2, 0.1]  # Dark green soldermask
+      silk_color: [1, 1, 1]        # White silkscreen
+      copper_color: [0.8, 0.5, 0.2] # Copper color
+      
+      # Export settings
+      export_materials: true
+      export_textures: true
+      separate_files_for_components: true
+      
+      # Scale and units
+      unit: mm
+      scale: 1.0
+      
+      # Output format options
+      format: blend     # Can also use obj or stl
+      compress: true    # Create a zipped archive
+      
+      # Optional filters
+      include_components: []  # Leave empty to include all
+      exclude_components: []  # Components to exclude
+      
+      # Advanced features
+      create_uvmap: true
+      create_materials: true
+      use_pbr_materials: true
