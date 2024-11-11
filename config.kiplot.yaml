@@ -193,7 +193,7 @@ outputs:
 
   - name: blender_export
     comment: "Export PCB to Blender format"
-    type: blender
+    type: blender_export
     dir: blender_output
     options:
       # PCB rendering options
