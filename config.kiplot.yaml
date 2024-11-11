@@ -200,9 +200,9 @@ outputs:
     options:
       render_options:
         transparent_background: true
-        samples: 20
+        samples: 5
       light_option:
-        energy: 100
+        energy: 200
       point_of_view:
         rotate_x: 30
         rotate_z: -20
