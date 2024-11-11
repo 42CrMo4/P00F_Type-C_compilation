@@ -13,7 +13,7 @@ preflight:
     dont_stop: true
 
 global:
-   output: <<ID>>_<<project_name>>_%i_<<hash>>.%x
+   output: P00F_Type-C_compilation_%i_Git-36f7bdb.%x
 
 #import:
   #- file: 3DRender_top_straight
@@ -66,7 +66,7 @@ outputs:
     run_by_default: false
     options:
       format: CSV
-      output: <<ID>>_BoM.csv
+      output: P00F_BoM.csv
       csv:
         hide_pcb_info: true
         hide_stats_info: true

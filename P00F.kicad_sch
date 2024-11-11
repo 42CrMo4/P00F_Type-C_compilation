@@ -5,10 +5,10 @@
 	(uuid "46918595-4a45-48e8-84c0-961b4db7f35f")
 	(paper "A4")
 	(title_block
-		(title "<<ID>>_<<project_name>>")
-		(date "<<date>>")
+		(title "P00F_Type-C_compilation")
+		(date "2024-11-11")
 		(rev "<<version>>")
-		(comment 4 "<<hash>>")
+		(comment 4 "Git-36f7bdb")
 	)
 	(lib_symbols
 		(symbol "Snapeda_kicad_sym:TYPE-C-31-M-12"
