@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [DRC, determine-run-type]
+    needs: [DRC, determine-run-type, ERC]
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
