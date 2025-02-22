@@ -1,7 +1,7 @@
 (kicad_pcb
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(general
 		(thickness 1.6)
 		(legacy_teardrops no)
@@ -15,25 +15,25 @@
 	)
 	(layers
 		(0 "F.Cu" signal)
-		(31 "B.Cu" signal)
-		(32 "B.Adhes" user "B.Adhesive")
-		(33 "F.Adhes" user "F.Adhesive")
-		(34 "B.Paste" user)
-		(35 "F.Paste" user)
-		(36 "B.SilkS" user "B.Silkscreen")
-		(37 "F.SilkS" user "F.Silkscreen")
-		(38 "B.Mask" user)
-		(39 "F.Mask" user)
-		(40 "Dwgs.User" user "User.Drawings")
-		(41 "Cmts.User" user "User.Comments")
-		(42 "Eco1.User" user "User.Eco1")
-		(43 "Eco2.User" user "User.Eco2")
-		(44 "Edge.Cuts" user)
-		(45 "Margin" user)
-		(46 "B.CrtYd" user "B.Courtyard")
-		(47 "F.CrtYd" user "F.Courtyard")
-		(48 "B.Fab" user)
-		(49 "F.Fab" user)
+		(2 "B.Cu" signal)
+		(9 "F.Adhes" user "F.Adhesive")
+		(11 "B.Adhes" user "B.Adhesive")
+		(13 "F.Paste" user)
+		(15 "B.Paste" user)
+		(5 "F.SilkS" user "F.Silkscreen")
+		(7 "B.SilkS" user "B.Silkscreen")
+		(1 "F.Mask" user)
+		(3 "B.Mask" user)
+		(17 "Dwgs.User" user "User.Drawings")
+		(19 "Cmts.User" user "User.Comments")
+		(21 "Eco1.User" user "User.Eco1")
+		(23 "Eco2.User" user "User.Eco2")
+		(25 "Edge.Cuts" user)
+		(27 "Margin" user)
+		(31 "F.CrtYd" user "F.Courtyard")
+		(29 "B.CrtYd" user "B.Courtyard")
+		(35 "F.Fab" user)
+		(33 "B.Fab" user)
 	)
 	(setup
 		(stackup
@@ -77,9 +77,10 @@
 		)
 		(pad_to_mask_clearance 0)
 		(allow_soldermask_bridges_in_footprints no)
+		(tenting front back)
 		(pcbplotparams
-			(layerselection 0x00010fc_ffffffff)
-			(plot_on_all_layers_selection 0x0000000_00000000)
+			(layerselection 0x00000000_00000000_55555555_5755f5ff)
+			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
 			(disableapertmacros no)
 			(usegerberextensions no)
 			(usegerberattributes yes)
@@ -89,7 +90,6 @@
 			(dashed_line_gap_ratio 3.000000)
 			(svgprecision 6)
 			(plotframeref no)
-			(viasonmask no)
 			(mode 1)
 			(useauxorigin no)
 			(hpglpennumber 1)
@@ -97,16 +97,20 @@
 			(hpglpendiameter 15.000000)
 			(pdf_front_fp_property_popups yes)
 			(pdf_back_fp_property_popups yes)
+			(pdf_metadata yes)
+			(pdf_single_document no)
 			(dxfpolygonmode yes)
 			(dxfimperialunits yes)
 			(dxfusepcbnewfont yes)
 			(psnegative no)
 			(psa4output no)
-			(plotreference yes)
-			(plotvalue yes)
-			(plotfptext yes)
+			(plot_black_and_white yes)
 			(plotinvisibletext no)
 			(sketchpadsonfab no)
+			(plotpadnumbers no)
+			(hidednponfab no)
+			(sketchdnponfab yes)
+			(crossoutdnponfab yes)
 			(subtractmaskfromsilk no)
 			(outputformat 1)
 			(mirror no)
@@ -199,18 +203,6 @@
 			(effects
 				(font
 					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "Snapeda:TYPE-C-31-M-12_HRO_TYPE-C-31-M-12"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "0b9eda6d-b334-43ce-8190-c40c4a8fb6fd")
-			(effects
-				(font
-					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -412,6 +404,150 @@
 		(sheetname "Stammblatt")
 		(sheetfile "PFFF.kicad_sch")
 		(attr smd)
+		(fp_poly
+			(pts
+				(xy -3.55 -5.37) (xy -2.85 -5.37) (xy -2.85 -4.13) (xy -3.55 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "19146854-68f4-4bf9-bfe3-9f7ea4223f78")
+		)
+		(fp_poly
+			(pts
+				(xy -2.75 -5.37) (xy -2.05 -5.37) (xy -2.05 -4.13) (xy -2.75 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "7529c9c9-fc0c-4548-894c-9ced87f201cd")
+		)
+		(fp_poly
+			(pts
+				(xy -1.95 -5.37) (xy -1.55 -5.37) (xy -1.55 -4.13) (xy -1.95 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "24ab4fb7-f5b2-4a04-a92e-22e75355caed")
+		)
+		(fp_poly
+			(pts
+				(xy -1.45 -5.37) (xy -1.05 -5.37) (xy -1.05 -4.13) (xy -1.45 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "359ab90d-23f1-412d-ad69-a232268345b3")
+		)
+		(fp_poly
+			(pts
+				(xy -0.95 -5.37) (xy -0.55 -5.37) (xy -0.55 -4.13) (xy -0.95 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "4b29d57f-791b-4752-b154-e419204cd70a")
+		)
+		(fp_poly
+			(pts
+				(xy -0.45 -5.37) (xy -0.05 -5.37) (xy -0.05 -4.13) (xy -0.45 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "45d55981-ae74-4311-a8a1-779d35548cba")
+		)
+		(fp_poly
+			(pts
+				(xy 0.05 -5.37) (xy 0.45 -5.37) (xy 0.45 -4.13) (xy 0.05 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "bea40bd0-71e4-4b42-a515-6e12932d70de")
+		)
+		(fp_poly
+			(pts
+				(xy 0.55 -5.37) (xy 0.95 -5.37) (xy 0.95 -4.13) (xy 0.55 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "cd33ca40-27a3-4fc3-b454-1c16f4a134ed")
+		)
+		(fp_poly
+			(pts
+				(xy 1.05 -5.37) (xy 1.45 -5.37) (xy 1.45 -4.13) (xy 1.05 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "2de29677-6037-4563-bc13-de1e9f2ef08f")
+		)
+		(fp_poly
+			(pts
+				(xy 1.55 -5.37) (xy 1.95 -5.37) (xy 1.95 -4.13) (xy 1.55 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "0165d60f-ae5d-4d3e-a309-20fdc82bae1b")
+		)
+		(fp_poly
+			(pts
+				(xy 2.05 -5.37) (xy 2.75 -5.37) (xy 2.75 -4.13) (xy 2.05 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "7202f3ac-3220-40b5-9051-27032680c2cf")
+		)
+		(fp_poly
+			(pts
+				(xy 2.85 -5.37) (xy 3.55 -5.37) (xy 3.55 -4.13) (xy 2.85 -4.13)
+			)
+			(stroke
+				(width 0.01)
+				(type solid)
+			)
+			(fill yes)
+			(layer "F.Mask")
+			(uuid "07c58759-b3c6-4a77-b341-9d2fc4de3be6")
+		)
 		(fp_line
 			(start -4.47 -2.85)
 			(end -4.47 -1.17)
@@ -439,153 +575,9 @@
 				(width 0.2)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "F.SilkS")
 			(uuid "ffc65275-babd-44e3-a6e4-74141bab27ce")
-		)
-		(fp_poly
-			(pts
-				(xy -3.55 -5.37) (xy -2.85 -5.37) (xy -2.85 -4.13) (xy -3.55 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "19146854-68f4-4bf9-bfe3-9f7ea4223f78")
-		)
-		(fp_poly
-			(pts
-				(xy -2.75 -5.37) (xy -2.05 -5.37) (xy -2.05 -4.13) (xy -2.75 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "7529c9c9-fc0c-4548-894c-9ced87f201cd")
-		)
-		(fp_poly
-			(pts
-				(xy -1.95 -5.37) (xy -1.55 -5.37) (xy -1.55 -4.13) (xy -1.95 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "24ab4fb7-f5b2-4a04-a92e-22e75355caed")
-		)
-		(fp_poly
-			(pts
-				(xy -1.45 -5.37) (xy -1.05 -5.37) (xy -1.05 -4.13) (xy -1.45 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "359ab90d-23f1-412d-ad69-a232268345b3")
-		)
-		(fp_poly
-			(pts
-				(xy -0.95 -5.37) (xy -0.55 -5.37) (xy -0.55 -4.13) (xy -0.95 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "4b29d57f-791b-4752-b154-e419204cd70a")
-		)
-		(fp_poly
-			(pts
-				(xy -0.45 -5.37) (xy -0.05 -5.37) (xy -0.05 -4.13) (xy -0.45 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "45d55981-ae74-4311-a8a1-779d35548cba")
-		)
-		(fp_poly
-			(pts
-				(xy 0.05 -5.37) (xy 0.45 -5.37) (xy 0.45 -4.13) (xy 0.05 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "bea40bd0-71e4-4b42-a515-6e12932d70de")
-		)
-		(fp_poly
-			(pts
-				(xy 0.55 -5.37) (xy 0.95 -5.37) (xy 0.95 -4.13) (xy 0.55 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "cd33ca40-27a3-4fc3-b454-1c16f4a134ed")
-		)
-		(fp_poly
-			(pts
-				(xy 1.05 -5.37) (xy 1.45 -5.37) (xy 1.45 -4.13) (xy 1.05 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "2de29677-6037-4563-bc13-de1e9f2ef08f")
-		)
-		(fp_poly
-			(pts
-				(xy 1.55 -5.37) (xy 1.95 -5.37) (xy 1.95 -4.13) (xy 1.55 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "0165d60f-ae5d-4d3e-a309-20fdc82bae1b")
-		)
-		(fp_poly
-			(pts
-				(xy 2.05 -5.37) (xy 2.75 -5.37) (xy 2.75 -4.13) (xy 2.05 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "7202f3ac-3220-40b5-9051-27032680c2cf")
-		)
-		(fp_poly
-			(pts
-				(xy 2.85 -5.37) (xy 3.55 -5.37) (xy 3.55 -4.13) (xy 2.85 -4.13)
-			)
-			(stroke
-				(width 0.01)
-				(type solid)
-			)
-			(fill solid)
-			(layer "F.Mask")
-			(uuid "07c58759-b3c6-4a77-b341-9d2fc4de3be6")
 		)
 		(fp_line
 			(start -5.025 -5.57)
@@ -714,7 +706,7 @@
 				(width 0.2)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "F.Fab")
 			(uuid "0775dba1-0a31-4c89-8853-2541d5f62016")
 		)
@@ -899,6 +891,7 @@
 			(solder_mask_margin 0.102)
 			(uuid "8c186207-1af3-4524-8f07-ad4e7a5404fe")
 		)
+		(embedded_fonts no)
 		(model "${KICAD_3RD_PARTY}/Snapeda.3dshapes/TYPE-C-31-M-12.step"
 			(offset
 				(xyz 0 0 0)
@@ -944,18 +937,6 @@
 			(effects
 				(font
 					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "Snapeda:USB4120-03-C_REVA_GCT_USB4120-03-C_REVA"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a1e9a7b1-96de-4f68-b57f-c920cebd6855")
-			(effects
-				(font
-					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -1211,7 +1192,7 @@
 				(width 0.2)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "F.SilkS")
 			(uuid "cdb3e6a6-f1eb-4be0-a698-27d399711806")
 		)
@@ -1366,7 +1347,7 @@
 				(width 0.2)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "F.Fab")
 			(uuid "df0aba37-70d3-45da-b985-1d71121ccbc3")
 		)
@@ -1387,7 +1368,7 @@
 		(pad "A1" smd rect
 			(at -2.75 -0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 29 "Net-(J3-GND_A-PadA1)")
 			(pinfunction "GND_A")
 			(pintype "power_in")
@@ -1397,7 +1378,7 @@
 		(pad "A4" smd rect
 			(at -1.25 -0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 25 "Net-(J3-VBUS_A-PadA4)")
 			(pinfunction "VBUS_A")
 			(pintype "power_in")
@@ -1407,7 +1388,7 @@
 		(pad "A5" smd rect
 			(at -0.75 -0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 28 "unconnected-(J3-CC1-PadA5)")
 			(pinfunction "CC1")
 			(pintype "bidirectional")
@@ -1417,7 +1398,7 @@
 		(pad "A6" smd rect
 			(at -0.25 -0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 31 "unconnected-(J3-D1+-PadA6)")
 			(pinfunction "D1+")
 			(pintype "bidirectional")
@@ -1427,7 +1408,7 @@
 		(pad "A7" smd rect
 			(at 0.25 -0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 27 "unconnected-(J3-D1--PadA7)")
 			(pinfunction "D1-")
 			(pintype "bidirectional")
@@ -1437,7 +1418,7 @@
 		(pad "A8" smd rect
 			(at 0.75 -0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 30 "unconnected-(J3-SBU1-PadA8)")
 			(pinfunction "SBU1")
 			(pintype "bidirectional")
@@ -1447,7 +1428,7 @@
 		(pad "A9" smd rect
 			(at 1.25 -0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 25 "Net-(J3-VBUS_A-PadA4)")
 			(pinfunction "VBUS_A")
 			(pintype "power_in")
@@ -1457,7 +1438,7 @@
 		(pad "A12" smd rect
 			(at 2.75 -0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 29 "Net-(J3-GND_A-PadA1)")
 			(pinfunction "GND_A")
 			(pintype "power_in")
@@ -1467,7 +1448,7 @@
 		(pad "B1" smd rect
 			(at 2.75 0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 24 "Net-(J3-GND_B-PadB1)")
 			(pinfunction "GND_B")
 			(pintype "power_in")
@@ -1477,7 +1458,7 @@
 		(pad "B4" smd rect
 			(at 1.25 0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 26 "Net-(J3-VBUS_B-PadB4)")
 			(pinfunction "VBUS_B")
 			(pintype "power_in")
@@ -1487,7 +1468,7 @@
 		(pad "B5" smd rect
 			(at 0.75 0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 33 "unconnected-(J3-CC2-PadB5)")
 			(pinfunction "CC2")
 			(pintype "bidirectional")
@@ -1497,7 +1478,7 @@
 		(pad "B6" smd rect
 			(at 0.25 0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 32 "unconnected-(J3-D2+-PadB6)")
 			(pinfunction "D2+")
 			(pintype "bidirectional")
@@ -1507,7 +1488,7 @@
 		(pad "B7" smd rect
 			(at -0.25 0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 34 "unconnected-(J3-D2--PadB7)")
 			(pinfunction "D2-")
 			(pintype "bidirectional")
@@ -1517,7 +1498,7 @@
 		(pad "B8" smd rect
 			(at -0.75 0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 35 "unconnected-(J3-SBU2-PadB8)")
 			(pinfunction "SBU2")
 			(pintype "bidirectional")
@@ -1527,7 +1508,7 @@
 		(pad "B9" smd rect
 			(at -1.25 0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 26 "Net-(J3-VBUS_B-PadB4)")
 			(pinfunction "VBUS_B")
 			(pintype "power_in")
@@ -1537,7 +1518,7 @@
 		(pad "B12" smd rect
 			(at -2.75 0.865)
 			(size 0.3 0.87)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 24 "Net-(J3-GND_B-PadB1)")
 			(pinfunction "GND_B")
 			(pintype "power_in")
@@ -1592,6 +1573,7 @@
 			(solder_mask_margin 0.102)
 			(uuid "c1275f04-dd2a-4674-866e-7cfc4f7b333c")
 		)
+		(embedded_fonts no)
 		(model "${KICAD_3RD_PARTY}/Snapeda.3dshapes/USB4120-03-C_REVA.step"
 			(offset
 				(xyz 0 0 0)
@@ -1637,18 +1619,6 @@
 			(effects
 				(font
 					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "Snapeda:UJ20-C-H-G-SMT-TR_CUI_UJ20-C-H-G-SMT-TR"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6a407aea-39ac-4e37-ae65-5cdaa5577271")
-			(effects
-				(font
-					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -1960,7 +1930,7 @@
 				(width 0.2)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "F.SilkS")
 			(uuid "804f9153-ace8-4a69-a778-4cfff170180e")
 		)
@@ -2071,7 +2041,7 @@
 				(width 0.2)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "F.Fab")
 			(uuid "609245f6-963c-4148-b0ec-93e8f693837e")
 		)
@@ -2326,6 +2296,7 @@
 			(solder_mask_margin 0.102)
 			(uuid "80cc3d2c-828c-4b42-bbe8-13e87c213be1")
 		)
+		(embedded_fonts no)
 		(model "${KICAD_3RD_PARTY}/Snapeda.3dshapes/UJ20-C-H-G-SMT-TR.wrl"
 			(offset
 				(xyz 0 -4 0)
@@ -2371,18 +2342,6 @@
 			(effects
 				(font
 					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "Snapeda:easyeda2kicad_USB-C-TH_TYPE-C-31-M-33"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "329a63b5-d018-449b-a6ba-4ae7ba8c27df")
-			(effects
-				(font
-					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -2515,7 +2474,7 @@
 				(width 0.06)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "F.Fab")
 			(uuid "853e78e0-234b-4efe-b48f-d1aac3f708a7")
 		)
@@ -2596,6 +2555,7 @@
 			(pintype "unspecified")
 			(uuid "d83f302b-69a3-403c-a3fa-ad168110bff5")
 		)
+		(embedded_fonts no)
 		(model "${KICAD_3RD_PARTY}/Snapeda.3dshapes/USB-C-TH_TYPE-C-31-M-33.step"
 			(offset
 				(xyz 0 -1.15 1.6)
@@ -2641,18 +2601,6 @@
 			(effects
 				(font
 					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "Snapeda:easyeda2kicad_USB-C-SMD_TYPE-C-31-M-31"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "7df5e5a6-3cfc-459e-9f69-dc8a3bec6dd2")
-			(effects
-				(font
-					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -2765,7 +2713,7 @@
 				(width 0.25)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "Cmts.User")
 			(uuid "1ac9c4e3-7616-4242-963b-8562facad9c5")
 		)
@@ -2776,7 +2724,7 @@
 				(width 0.25)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "Cmts.User")
 			(uuid "f5cd4951-7d1f-418c-a616-569ae75377ab")
 		)
@@ -2787,7 +2735,7 @@
 				(width 0.06)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "F.Fab")
 			(uuid "15dbe0c8-4b1d-4555-a54d-fcd7b2215f6b")
 		)
@@ -2865,7 +2813,7 @@
 		(pad "A1" smd rect
 			(at -3.2 -2.37)
 			(size 0.5 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 44 "unconnected-(USB2-GND-PadA1)")
 			(pinfunction "GND")
 			(pintype "unspecified")
@@ -2874,7 +2822,7 @@
 		(pad "A4" smd rect
 			(at -2.4 -2.37)
 			(size 0.5 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 45 "unconnected-(USB2-VBUS-PadA4)")
 			(pinfunction "VBUS")
 			(pintype "unspecified")
@@ -2883,7 +2831,7 @@
 		(pad "A5" smd rect
 			(at -1.25 -2.37)
 			(size 0.3 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 46 "unconnected-(USB2-CC1-PadA5)")
 			(pinfunction "CC1")
 			(pintype "unspecified")
@@ -2892,7 +2840,7 @@
 		(pad "A6" smd rect
 			(at -0.25 -2.37)
 			(size 0.3 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 51 "unconnected-(USB2-DP1-PadA6)")
 			(pinfunction "DP1")
 			(pintype "unspecified")
@@ -2901,7 +2849,7 @@
 		(pad "A7" smd rect
 			(at 0.25 -2.37)
 			(size 0.3 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 54 "unconnected-(USB2-DN1-PadA7)")
 			(pinfunction "DN1")
 			(pintype "unspecified")
@@ -2910,7 +2858,7 @@
 		(pad "A8" smd rect
 			(at 1.25 -2.37)
 			(size 0.3 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 48 "unconnected-(USB2-SBU1-PadA8)")
 			(pinfunction "SBU1")
 			(pintype "unspecified")
@@ -2919,7 +2867,7 @@
 		(pad "A9" smd rect
 			(at 2.4 -2.37)
 			(size 0.5 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 49 "unconnected-(USB2-VBUS-PadA9)")
 			(pinfunction "VBUS")
 			(pintype "unspecified")
@@ -2928,7 +2876,7 @@
 		(pad "A12" smd rect
 			(at 3.2 -2.37)
 			(size 0.5 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 55 "unconnected-(USB2-GND-PadA12)")
 			(pinfunction "GND")
 			(pintype "unspecified")
@@ -2937,7 +2885,7 @@
 		(pad "B5" smd rect
 			(at 1.75 -2.37)
 			(size 0.3 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 43 "unconnected-(USB2-CC2-PadB5)")
 			(pinfunction "CC2")
 			(pintype "unspecified")
@@ -2946,7 +2894,7 @@
 		(pad "B6" smd rect
 			(at 0.75 -2.37)
 			(size 0.3 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 50 "unconnected-(USB2-DP2-PadB6)")
 			(pinfunction "DP2")
 			(pintype "unspecified")
@@ -2955,7 +2903,7 @@
 		(pad "B7" smd rect
 			(at -0.75 -2.37)
 			(size 0.3 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 52 "unconnected-(USB2-DN2-PadB7)")
 			(pinfunction "DN2")
 			(pintype "unspecified")
@@ -2964,12 +2912,13 @@
 		(pad "B8" smd rect
 			(at -1.75 -2.37)
 			(size 0.3 1.14)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 53 "unconnected-(USB2-SBU2-PadB8)")
 			(pinfunction "SBU2")
 			(pintype "unspecified")
 			(uuid "cd04d447-a258-478a-aca7-9607b477239b")
 		)
+		(embedded_fonts no)
 		(model "${KICAD_3RD_PARTY}/Snapeda.3dshapes/USB-C-SMD_TYPE-C-31-M-31.step"
 			(offset
 				(xyz 0 -1.1 1.7)
@@ -3015,18 +2964,6 @@
 			(effects
 				(font
 					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Footprint" "Snapeda:easyeda2kicad_USB-C-SMD_TYPE-C-31-M-29"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3158e7d8-8ee4-4468-ac14-cc5357bee59f")
-			(effects
-				(font
-					(size 1.27 1.27)
 					(thickness 0.15)
 				)
 			)
@@ -3219,7 +3156,7 @@
 				(width 0.06)
 				(type solid)
 			)
-			(fill none)
+			(fill no)
 			(layer "F.Fab")
 			(uuid "e95f1c16-854f-4fe1-88fb-378c953dc240")
 		)
@@ -3237,7 +3174,7 @@
 		(pad "1" smd rect
 			(at -5.06 -1.73)
 			(size 2 1.2)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 36 "unconnected-(USB1-Pad1)")
 			(pinfunction "1")
 			(pintype "unspecified")
@@ -3246,7 +3183,7 @@
 		(pad "1" smd rect
 			(at -5.06 2.08)
 			(size 2 1.2)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 36 "unconnected-(USB1-Pad1)")
 			(pinfunction "1")
 			(pintype "unspecified")
@@ -3255,7 +3192,7 @@
 		(pad "1" smd rect
 			(at 5.06 -1.73)
 			(size 2 1.2)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 36 "unconnected-(USB1-Pad1)")
 			(pinfunction "1")
 			(pintype "unspecified")
@@ -3264,7 +3201,7 @@
 		(pad "1" smd rect
 			(at 5.06 2.08)
 			(size 2 1.2)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 36 "unconnected-(USB1-Pad1)")
 			(pinfunction "1")
 			(pintype "unspecified")
@@ -3273,7 +3210,7 @@
 		(pad "A5" smd rect
 			(at -0.5 -2.08)
 			(size 0.7 1.6)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 38 "unconnected-(USB1-CC1-PadA5)")
 			(pinfunction "CC1")
 			(pintype "unspecified")
@@ -3282,7 +3219,7 @@
 		(pad "A9" smd rect
 			(at 1.52 -2.08)
 			(size 0.8 1.6)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 42 "unconnected-(USB1-VBUS-PadA9)")
 			(pinfunction "VBUS")
 			(pintype "unspecified")
@@ -3291,7 +3228,7 @@
 		(pad "A12" smd rect
 			(at 2.75 -2.08)
 			(size 0.8 1.6)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 41 "unconnected-(USB1-GND-PadA12)")
 			(pinfunction "GND")
 			(pintype "unspecified")
@@ -3300,7 +3237,7 @@
 		(pad "B5" smd rect
 			(at 0.5 -2.08)
 			(size 0.7 1.6)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 39 "unconnected-(USB1-CC2-PadB5)")
 			(pinfunction "CC2")
 			(pintype "unspecified")
@@ -3309,7 +3246,7 @@
 		(pad "B9" smd rect
 			(at -1.52 -2.08)
 			(size 0.8 1.6)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 37 "unconnected-(USB1-VBUS-PadB9)")
 			(pinfunction "VBUS")
 			(pintype "unspecified")
@@ -3318,12 +3255,13 @@
 		(pad "B12" smd rect
 			(at -2.75 -2.08)
 			(size 0.8 1.6)
-			(layers "F.Cu" "F.Paste" "F.Mask")
+			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 40 "unconnected-(USB1-GND-PadB12)")
 			(pinfunction "GND")
 			(pintype "unspecified")
 			(uuid "8cde6212-1eab-45a6-b648-a9929f42d3b5")
 		)
+		(embedded_fonts no)
 		(model "${KICAD_3RD_PARTY}/Snapeda.3dshapes/USB-C-SMD_TYPE-C-31-M-29.step"
 			(offset
 				(xyz 0 -1.25 1.68)
@@ -3354,7 +3292,7 @@
 			(width 0.05)
 			(type default)
 		)
-		(fill none)
+		(fill no)
 		(layer "Edge.Cuts")
 		(uuid "8968b7ab-8c63-4952-8fab-085046074f81")
 	)
@@ -3369,4 +3307,5 @@
 			)
 		)
 	)
+	(embedded_fonts no)
 )
